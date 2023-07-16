@@ -1,3 +1,6 @@
+#include <algorithm>
+#include <iostream>
+
 #include "utils/DataGenerator.cpp"
 #include "sorts/sort_headers.h"
 
