@@ -1,5 +1,6 @@
 #include <algorithm>
 #include <iostream>
+#include <time.h>
 
 #include "utils/DataGenerator.cpp"
 #include "sorts/sort_headers.h"
