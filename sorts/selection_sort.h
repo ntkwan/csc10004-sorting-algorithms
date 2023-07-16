@@ -1,6 +1,7 @@
 #ifndef SELECTION_SORT_HEADER
 #define SELECTION_SORT_HEADER
 
+
 void selectionSort(int a[], int n) {
     for (int i = 0; i < n - 1; ++i) {
         int minIdx = i;
@@ -9,7 +10,7 @@ void selectionSort(int a[], int n) {
                 minIdx = j;
         }
 
-        if (minIdx != i) swap(a[minIdx], a[i]);
+        if (minIdx != i) std::swap(a[minIdx], a[i]);
     }
 }
 

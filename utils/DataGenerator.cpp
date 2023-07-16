@@ -2,7 +2,6 @@
 #include <fstream>
 #include <cmath>
 #include <time.h>
-using namespace std;
 
 template <class T>
 void HoanVi(T &a, T &b)
