@@ -1,30 +1,29 @@
 #ifndef RADIX_SORT_H_INCLUDED
 #define RADIX_SORT_H_INCLUDED
-int findMax(int a[], int n)
+int FindMax(int a[], int n)
 {
 	int m = -2e9;
 	for (int i = 0; i < n; i++)
 		if (a[i] > m)
 			m = a[i];
-	return m;
+
+return m;
 }
 
-int findMin(int a[], int n)
+int FindMin(int a[], int n)
 {
 	int m = 2e9;
 	for (int i = 0; i < n; i++)
 		if (a[i] < m)
 			m = a[i];
-	return m;
+
+return m;
 }
 
 void CountingSort(int a[], int n, int exp)
 {
-	int* f = new int[10];
-	int* b = new int[n];
-
-	for (int i = 0; i < 10; i++)
-		f[i] = 0;
+	int* f = new int[10] {0};
+	int* b = new int[n] {0};
 
 	for (int i = 0; i < n; i++)
 		f[(a[i] / exp) % 10]++;
@@ -40,23 +39,22 @@ void CountingSort(int a[], int n, int exp)
 
 	for (int i = 0; i < n; i++)
 		a[i] = b[i];
-
 }
 
 void RadixSort(int a[], int n)
 {
+    int minVal = FindMin(a, n);
+    if (minVal < 0)
 
-    int min = findMin(a, n);
-    if (min < 0)
-        for (int i = 0; i < n; i++)
-            a[i] -= min;
+    for (int i = 0; i < n; i++)
+        a[i] -= minVal;
 
-    int max = findMax(a, n);
-	for (int exp = 1; max / exp > 0; exp *= 10)
+    int maxVal = FindMax(a, n);
+	for (int exp = 1; maxVal / exp > 0; exp *= 10)
 		CountingSort(a, n, exp);
 
-    if (min < 0)
+    if (minVal < 0)
         for (int i = 0; i < n; i++)
-            a[i] += min;
+            a[i] += minVal;
 }
 #endif // RADIX_SORT_H_INCLUDED

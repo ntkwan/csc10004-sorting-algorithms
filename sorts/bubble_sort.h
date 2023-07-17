@@ -5,19 +5,17 @@ void BubbleSort(int a[], int n)
     int lstExchange = n - 2;
     for (int i = 0; i < n; i++)
     {
-        int pos = -1;
+        int curExchange = -1;
         for (int j = 0; j <= lstExchange; j++)
         {
             if (a[j] > a[j + 1])
             {
                 std::swap(a[j], a[j + 1]);
-                pos = j;
+                curExchange = j;
             }
         }
-        if (pos == -1)
-            break;
-        else
-            lstExchange = pos;
+        if (curExchange == -1) break;
+        else lstExchange = curExchange;
     }
 }
 
