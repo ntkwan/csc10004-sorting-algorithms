@@ -2,7 +2,7 @@
 #define COUNTING_SORT_HEADER
 
 void CountingSort(int a[], int n) {
-    int mx = 0;
+    int mx = -2E9;
     for (int i = 0; i < n; ++i)
         if (mx < a[i]) mx = a[i];
 
