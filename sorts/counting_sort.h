@@ -26,8 +26,6 @@ void CountingSort(int a[], int n) {
         --f[a[i]];
     }
 
-    int neg = 1;
-    if (mn < 0) neg = -1;
     for (int i = 0; i < n; ++i) a[i] = b[i] + mn;
 }
 
