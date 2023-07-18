@@ -20,21 +20,21 @@ int FindMin(int a[], int n)
 return m;
 }
 
-void CountingSort(int a[], int n, int exp)
+void CountingSort(int a[], int n, int shift)
 {
-	int* f = new int[10] {0};
-	int* b = new int[n] {0};
+	int* f = new int[16] {0};
+	int* b = new int[n];
 
 	for (int i = 0; i < n; i++)
-		f[(a[i] / exp) % 10]++;
+		f[a[i] >> shift & 15]++;
 
-	for (int i = 1; i < 10; i++)
+	for (int i = 1; i < 16; i++)
 		f[i] += f[i - 1];
 
 	for (int i = n - 1; i >= 0; i--)
 	{
-		b[f[(a[i] / exp) % 10] - 1] = a[i];
-		f[(a[i] / exp) % 10]--;
+		b[f[a[i] >> shift & 15] - 1] = a[i];
+		f[a[i] >> shift & 15]--;
 	}
 
 	for (int i = 0; i < n; i++)
@@ -44,17 +44,18 @@ void CountingSort(int a[], int n, int exp)
 void RadixSort(int a[], int n)
 {
     int minVal = FindMin(a, n);
+
     if (minVal < 0)
+        for (int i = 0; i < n; i++)
+            a[i] -= minVal;
 
-    for (int i = 0; i < n; i++)
-        a[i] -= minVal;
-
-    int maxVal = FindMax(a, n);
-	for (int exp = 1; maxVal / exp > 0; exp *= 10)
-		CountingSort(a, n, exp);
+	int maxVal = FindMax(a, n);
+	for (int shift = 0; (maxVal >> shift) > 0; shift += 4)
+		CountingSort(a, n, shift);
 
     if (minVal < 0)
         for (int i = 0; i < n; i++)
             a[i] += minVal;
 }
+
 #endif // RADIX_SORT_H_INCLUDED
