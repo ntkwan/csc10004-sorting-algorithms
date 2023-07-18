@@ -68,4 +68,5 @@ namespace runcpr
             a[i] = b[i] + mn;
     }
 }
+
 #endif // COUNTING_SORT_HEADER

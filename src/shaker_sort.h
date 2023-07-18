@@ -76,4 +76,5 @@ namespace runcpr {
         }
     }
 }
+
 #endif // SHAKER_SORT_H_INCLUDED
