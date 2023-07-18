@@ -1,4 +1,4 @@
-#include "binary_insertion_sort.h"
+#include "insertion_sort.h"
 #include "heap_sort.h"
 #include "flash_sort.h"
 #include "selection_sort.h"
