@@ -36,7 +36,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    void ShakerSort(int a[], int n, int &comparison)
+    void ShakerSort(int a[], int n, long long &comparison)
     {
         int left = 0;
         int right = n - 1;

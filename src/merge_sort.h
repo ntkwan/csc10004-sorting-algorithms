@@ -45,7 +45,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    void Merge(int a[], int l, int mid, int r, int &comparison) {
+    void Merge(int a[], int l, int mid, int r, long long &comparison) {
         int i = l, j = mid + 1;
         std::vector<int> sortedArray;
         while (++comparison && i <= mid && ++comparison && j <= r) {
@@ -73,7 +73,7 @@ namespace runcpr {
         }
     }
 
-    void MergeSort(int a[], int l, int r, int& comparison) {
+    void MergeSort(int a[], int l, int r, long long& comparison) {
         if (l >= r) return;
 
         int mid = (l + r) / 2;
@@ -82,7 +82,7 @@ namespace runcpr {
         Merge(a, l, mid, r, comparison);
     }
 
-    void MergeSort(int a[], int n, int& comparison) {
+    void MergeSort(int a[], int n, long long& comparison) {
         MergeSort(a, 0, n - 1, comparison);
     }
 }

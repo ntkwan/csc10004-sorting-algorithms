@@ -29,7 +29,7 @@ namespace runtime
 }
 namespace runcpr
 {
-    void InsertionSort(int a[], int n, int& comparison)
+    void InsertionSort(int a[], int n, long long& comparison)
     {
         for (int i = 1; ++comparison && i < n; i++)
         {
@@ -43,7 +43,7 @@ namespace runcpr
             a[j + 1] = pivot;
         }
     }
-    void BinaryInsertionSort(int a[], int n, int& comparison)
+    void BinaryInsertionSort(int a[], int n, long long& comparison)
     {
         for (int i = 1; ++comparison && i < n; i++)
         {

@@ -40,7 +40,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    int Partition(int a[], int l, int r, int& comparison) {
+    int Partition(int a[], int l, int r, long long& comparison) {
         int p = a[l];
         int i = l;
         int j = r + 1;
@@ -55,7 +55,7 @@ namespace runcpr {
     return j;
     }
 
-    int GetRandomPivot(int a[], int l, int r, int& comparison) {
+    int GetRandomPivot(int a[], int l, int r, long long& comparison) {
         srand(time(NULL));
         int random = l + rand() % (r - l);
 
@@ -64,7 +64,7 @@ namespace runcpr {
         return Partition(a, l, r, comparison);
     }
 
-    void QuickSort(int a[], int l, int r, int& comparison) {
+    void QuickSort(int a[], int l, int r, long long& comparison) {
         if (l >= r) return;
 
         int s = GetRandomPivot(a, l, r, comparison);
@@ -72,7 +72,7 @@ namespace runcpr {
         QuickSort(a, s + 1, r, comparison);
     }
 
-    void QuickSort(int a[], int n, int& comparison) {
+    void QuickSort(int a[], int n, long long& comparison) {
         QuickSort(a, 0, n - 1, comparison);
     }
 }

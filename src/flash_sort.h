@@ -61,7 +61,7 @@ namespace runtime
 }
 namespace runcpr
 {
-    void FlashSort(int a[], int n, int& comparison)
+    void FlashSort(int a[], int n, long long& comparison)
     {
         if (++comparison && n <= 1)
             return;

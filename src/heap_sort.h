@@ -31,7 +31,7 @@ namespace runtime
 }
 namespace runcpr
 {
-    void Sift(int a[], int left, int right, int& comparison)
+    void Sift(int a[], int left, int right, long long& comparison)
     {
         int i = left;
         int j = left * 2 + 1;
@@ -48,7 +48,7 @@ namespace runcpr
         }
         a[i] = x;
     }
-    void HeapSort(int a[], int n, int& comparison)
+    void HeapSort(int a[], int n, long long& comparison)
     {
         for (int i = n / 2; ++comparison && i >= 0; i--)
             Sift(a, i, n - 1, comparison);

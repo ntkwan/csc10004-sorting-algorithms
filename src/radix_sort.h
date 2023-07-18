@@ -58,7 +58,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    int FindMax(int a[], int n, int &comparison)
+    int FindMax(int a[], int n, long long &comparison)
     {
         int m = -2e9;
         for (int i = 0; ++comparison && i < n; i++)
@@ -68,7 +68,7 @@ namespace runcpr {
         return m;
     }
 
-    int FindMin(int a[], int n, int &comparison)
+    int FindMin(int a[], int n, long long &comparison)
     {
         int m = 2e9;
         for (int i = 0; ++comparison && i < n; i++)
@@ -78,7 +78,7 @@ namespace runcpr {
         return m;
     }
 
-    void CountingSort(int a[], int n, int shift, int &comparison)
+    void CountingSort(int a[], int n, int shift, long long &comparison)
     {
         int* f = new int[16] {0};
         int* b = new int[n];
@@ -99,7 +99,7 @@ namespace runcpr {
             a[i] = b[i];
     }
 
-    void RadixSort(int a[], int n, int &comparison)
+    void RadixSort(int a[], int n, long long &comparison)
     {
         int minVal = FindMin(a, n, comparison);
 
@@ -109,7 +109,7 @@ namespace runcpr {
 
         int maxVal = FindMax(a, n, comparison);
         for (int shift = 0; ++comparison && (maxVal >> shift) > 0; shift += 4)
-            CountingSort(a, n, shift);
+            CountingSort(a, n, shift, comparison);
 
         if (++comparison && minVal < 0)
             for (int i = 0; ++comparison && i < n; i++)

@@ -20,7 +20,7 @@ namespace runtime {
 
 namespace runcpr
 {
-    void BubbleSort(int a[], int n, int& comparison)
+    void BubbleSort(int a[], int n, long long& comparison)
     {
         int lstExchange = n - 2;
         for (int i = 0; ++comparison && i < n; i++)
@@ -34,6 +34,7 @@ namespace runcpr
                     curExchange = j;
                 }
             }
+
             if (++comparison && curExchange == -1) break;
             else lstExchange = curExchange;
         }

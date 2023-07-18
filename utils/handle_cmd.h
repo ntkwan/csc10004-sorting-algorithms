@@ -28,7 +28,7 @@ sort_ptr sortRuntime[] = {
     runtime::ShakerSort, runtime::ShellSort, runtime::FlashSort, 
     runtime::HeapSort, runtime::InsertionSort, runtime::BinaryInsertionSort};
 
-typedef void (*sort_cpr)(int[], int, int&);
+typedef void (*sort_cpr)(int[], int, long long&);
 sort_cpr sortCpr[] = {
     runcpr::BubbleSort, runcpr::CountingSort, runcpr::MergeSort,
     runcpr::QuickSort, runcpr::RadixSort, runcpr::SelectionSort, 
@@ -38,6 +38,7 @@ sort_cpr sortCpr[] = {
 const int sortNum = sizeof(sortRuntime) / sizeof(sortRuntime[0]);
 const int maxN = 5E5;
 int a[maxN];
+int data[maxN];
 
 std::string GetDataName(int dataType);
 int GetSortName(const std::string &sortName);

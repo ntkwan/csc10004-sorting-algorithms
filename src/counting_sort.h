@@ -32,7 +32,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    void CountingSort(int a[], int n, int &comparison)
+    void CountingSort(int a[], int n, long long &comparison)
     {
         int mx = -2E9;
         for (int i = 0; ++comparison && i < n; ++i)

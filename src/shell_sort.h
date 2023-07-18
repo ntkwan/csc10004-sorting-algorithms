@@ -21,7 +21,7 @@ namespace runtime {
 }
 
 namespace runcpr {
-    void ShellSort(int a[], int n, int &comparison) {
+    void ShellSort(int a[], int n, long long &comparison) {
     const int gaps[] = {65921, 16577, 4193, 1073, 281, 77, 23, 8, 1};
 
     for (int idx = 0; ++comparison && idx < 9; ++idx) {
