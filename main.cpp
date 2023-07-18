@@ -1,16 +1,16 @@
-#include <algorithm>
-#include <iostream>
-#include <time.h>
+#include "utils/handle_cmd.cpp"
 
-#include "utils/DataGenerator.cpp"
-#include "sorts/sort_headers.h"
-
-
-const int N = 10;
-int a[N];
-
-int main()
+int main(int argc, char** argv) 
 {
-    GenerateRandomData(a, N);
-    selectionSort(a, N);
+    try {
+        if (argc <= 2) throw ERROR;
+
+        if (std::string(argv[1]) == "-a") AlgorithmMode(argc, argv);
+        else if (std::string(argv[1]) == "-c") ComparisonMode(argc, argv);
+        else throw ERROR;
+    } catch(int x) {
+        if (x == ERROR) {
+            std::cout << "Error: Invalid arguments!" << std::endl;
+        }
+    }
 }

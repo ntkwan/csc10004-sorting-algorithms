@@ -1,8 +1,7 @@
 #ifndef COUNTING_SORT_HEADER
 #define COUNTING_SORT_HEADER
 
-namespace runtime
-{
+namespace runtime {
     void CountingSort(int a[], int n) {
         int mx = -2E9;
         for (int i = 0; i < n; ++i)
@@ -32,8 +31,7 @@ namespace runtime
     }
 }
 
-namespace runcpr
-{
+namespace runcpr {
     void CountingSort(int a[], int n, int &comparison)
     {
         int mx = -2E9;
@@ -66,6 +64,8 @@ namespace runcpr
 
         for (int i = 0; ++comparison && i < n; ++i)
             a[i] = b[i] + mn;
+
+        for (int i = 0; i < n; ++i) a[i] = b[i] + mn;
     }
 }
 
