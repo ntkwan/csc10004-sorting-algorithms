@@ -15,4 +15,18 @@ namespace runtime {
     }
 }
 
+namespace runcpr {
+    void SelectionSort(int a[], int n, int &comparison) {
+        for (int i = 0; ++comparison && i < n - 1; ++i) {
+            int minIdx = i;
+            for (int j = i + 1; ++comparison && j < n; ++j) {
+                if (++comparison && a[j] < a[minIdx])
+                    minIdx = j;
+            }
+
+            if (++comparison && minIdx != i) std::swap(a[minIdx], a[i]);
+        }
+    }
+}
+
 #endif // SELECTION_SORT_HEADER

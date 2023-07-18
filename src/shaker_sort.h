@@ -69,8 +69,7 @@ namespace runcpr {
                 }
             }
 
-            if (++comparison && isSwapped == false)
-                break;
+            if (++comparison && isSwapped == false) break;
 
             left = k;
         }

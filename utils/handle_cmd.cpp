@@ -35,12 +35,21 @@ int GetDataOrder(const std::string &dataOrder) {
     else return -1;
 }
 
-void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction) {
+void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction, bool isRequired) {
+    std::cout << "Running time (if required): ";
+    if (isRequired == false) return void(std::cout<<"\n");
     auto start = std::chrono::high_resolution_clock::now();
     sortFunction(a, inputSize);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(end - start);
-    std::cout << "Running time (if required): " << 1.0 * duration.count() / CLOCKS_PER_SEC << "\n";
+    std::cout<<std::fixed<<std::setprecision(11)<< 1.0 * duration.count() / CLOCKS_PER_SEC << "\n";
+}
+
+void PrintComparisons(int a[], int inputSize, sort_cpr sortFunction, bool isRequired) {
+    std::cout << "Comparisons (if required): ";
+    if (isRequired == false) return void(std::cout<<"\n");
+    sortFunction(a, inputSize, runcpr::cmp);
+    std::cout<<runcpr::cmp<<"\n";
 }
 
 void PrintArray(int a[], int inputSize, const std::string &filename) {
@@ -56,18 +65,22 @@ void AlgorithmMode(int argc, char** argv) {
         return false;
     };
 
-    auto PrintResult = [&](int a[], int inputSize, sort_ptr sortFunction, const std::string& flag) {
+    auto PrintResult = [&](int a[], int inputSize, sort_ptr sortRuntime, sort_cpr sortComparisons, const std::string& flag) {
         if (flag == "-both") {
-            PrintRuntime(a, inputSize, sortRuntime[GetSortName(argv[2])]);
+            PrintRuntime(a, inputSize, sortRuntime, true);
+            PrintComparisons(a, inputSize, sortComparisons, true);
         } else if (flag == "-comp") {
-
+            PrintRuntime(a, inputSize, sortRuntime, false);
+            PrintComparisons(a, inputSize, sortComparisons, true);
         } else if (flag == "-time") {
-            PrintRuntime(a, inputSize, sortRuntime[GetSortName(argv[2])]);
+            PrintRuntime(a, inputSize, sortRuntime, true);
+            PrintComparisons(a, inputSize, sortComparisons, false);
         } else {
             return false;
         }   
         return true;
     };
+
     if (GetSortName(argv[2]) == -1) throw ERROR;
     
     if (ValidateFlag(argv[argc - 1]) == false) throw ERROR;
@@ -92,8 +105,9 @@ void AlgorithmMode(int argc, char** argv) {
 
                 std::string fileName = "input_" + std::to_string(dataType + 1) + ".txt";
                 PrintArray(a, inputSize, fileName);
-                PrintRuntime(a, inputSize, sortRuntime[GetSortName(argv[2])]);
-
+                PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], argv[4]);
+                fileName = "output_" + std::to_string(dataType + 1) + ".txt";
+                PrintArray(a, inputSize, fileName);
                 std::cout<<"\n";
             }
         } else {
@@ -107,7 +121,7 @@ void AlgorithmMode(int argc, char** argv) {
             for (int i = 0; i < inputSize; ++i) in>>a[i];
 
             std::string flag = std::string(argv[4]);
-            PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], flag);
+            PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], flag);
             PrintArray(a, inputSize, "output.txt");
 
             in.close();
@@ -128,7 +142,7 @@ void AlgorithmMode(int argc, char** argv) {
         std::cout<<"-------------------------------------------"<<"\n";
         
         std::string flag = std::string(argv[5]);
-        PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], flag);
+        PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], flag);
         PrintArray(a, inputSize, "output.txt");
     }
 }

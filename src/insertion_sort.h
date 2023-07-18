@@ -16,7 +16,7 @@ namespace runtime
             a[j + 1] = pivot;
         }
     }
-    void BinaryInsertionsortSort(int a[], int n)
+    void BinaryInsertionSort(int a[], int n)
     {
         for (int i = 1; i < n; i++){
             int pivot = a[i];
@@ -29,13 +29,13 @@ namespace runtime
 }
 namespace runcpr
 {
-    void Insertionsort(int a[], int n, int& comparison)
+    void InsertionSort(int a[], int n, int& comparison)
     {
         for (int i = 1; ++comparison && i < n; i++)
         {
             int pivot = a[i];
             int j = i - 1;
-            while (++(++comparison) && a[j] > pivot && j >= 0)
+            while (++comparison && a[j] > pivot && ++comparison && j >= 0)
             {
                 a[j + 1] = a[j];
                 j--;
@@ -43,7 +43,7 @@ namespace runcpr
             a[j + 1] = pivot;
         }
     }
-    void BinaryInsertionsortSort(int a[], int n, int& comparison)
+    void BinaryInsertionSort(int a[], int n, int& comparison)
     {
         for (int i = 1; ++comparison && i < n; i++)
         {
