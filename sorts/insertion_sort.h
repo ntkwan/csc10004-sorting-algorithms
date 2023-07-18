@@ -1,5 +1,5 @@
-#ifndef BINARY_INSERTION_SORT_HEADER
-#define BINARY_INSERTION_SORT_HEADER
+#ifndef INSERTION_SORT_HEADER
+#define INSERTION_SORT_HEADER
 namespace runtime
 {
     void InsertionSort(int a[], int n)
@@ -64,4 +64,4 @@ namespace runcpr
         }
     }
 }
-#endif // BINARY_INSERTION_SORT_HEADER
+#endif // INSERTION_SORT_HEADER
