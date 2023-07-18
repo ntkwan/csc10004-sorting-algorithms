@@ -19,11 +19,10 @@ namespace runtime
         }
         a[i] = x;
     }
-    void Heapsort(int a[], int n)
+    void HeapSort(int a[], int n)
     {
         for (int i = n / 2; i >= 0; i--)
             Sift(a, i, n - 1);
-
         for (int i = n - 1; i > 0; i--){
             std::swap(a[0], a[i]);
             Sift(a, 0, i - 1);
@@ -49,11 +48,10 @@ namespace runcpr
         }
         a[i] = x;
     }
-    void Heapsort(int a[], int n, int& comparison)
+    void HeapSort(int a[], int n, int& comparison)
     {
         for (int i = n / 2; ++comparison && i >= 0; i--)
             Sift(a, i, n - 1, comparison);
-
         for (int i = n - 1; ++comparison && i > 0; i--){
             std::swap(a[0], a[i]);
             Sift(a, 0, i - 1, comparison);

@@ -45,7 +45,6 @@ namespace runtime
                 ++count;
             }
         }
-
         //step 3
         for (int k = 1; k < m; ++k){
             for (int i = bucket[k] - 2; i >= bucket[k - 1]; --i)
@@ -81,7 +80,7 @@ namespace runcpr
         if (++comparison && max == min)
             return;
 
-    #define getK(x) 1ll * (m - 1) * (x - min) / (max - min)
+        #define getK(x) 1ll * (m - 1) * (x - min) / (max - min)
         for (int i = 0; ++comparison && i < n; ++i)
             ++bucket[getK(a[i])];
         for (int i = 1; ++comparison && i < m; ++i)
