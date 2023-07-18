@@ -14,7 +14,6 @@
 #include "../src/sort_headers.h"
 
 #define ERROR -1
-#define SUCCESS -2
 
 #define RANDOM_DATA 0
 #define SORTED_DATA 2
@@ -36,15 +35,17 @@ sort_cpr sortCpr[] = {
     runcpr::HeapSort, runcpr::InsertionSort, runcpr::BinaryInsertionSort};
 
 const int sortNum = sizeof(sortRuntime) / sizeof(sortRuntime[0]);
-const int maxN = 5E5;
+const int maxN = 1E6;
 int a[maxN];
 int data[maxN];
 
 std::string GetDataName(int dataType);
 int GetSortName(const std::string &sortName);
 int GetDataOrder(const std::string &dataOrder);
-void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction);
+void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction, int isComparison);
+void PrintComparisons(int a[], int inputSize, sort_cpr sortFunction, int isComparison);
 void PrintArray(int a[], int inputSize, const std::string &filename);
+void CopyArray(int a[], int data[], int inputSize);
 void AlgorithmMode(int argc, char** argv);
 void ComparisonMode(int argc, char** argv);
 
