@@ -9,6 +9,7 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
+#include <cassert>
 
 #include "../utils/DataGenerator.cpp"
 #include "../src/sort_headers.h"
@@ -19,6 +20,8 @@
 #define SORTED_DATA 2
 #define REVERSED_DATA 3
 #define NEARLY_SORTED_DATA 1
+
+//#define TESTING
 
 typedef void (*sort_ptr)(int[], int);
 sort_ptr sortRuntime[] = {
@@ -38,6 +41,10 @@ const int sortNum = sizeof(sortRuntime) / sizeof(sortRuntime[0]);
 const int maxN = 1E6;
 int a[maxN];
 int data[maxN];
+
+#ifdef TESTING
+int b[maxN];
+#endif //TESTING
 
 std::string GetDataName(int dataType);
 int GetSortName(const std::string &sortName);

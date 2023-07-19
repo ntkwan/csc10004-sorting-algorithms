@@ -39,20 +39,42 @@ void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction, int isCompariso
     if (isComparison == 1) std::cout << "Running time: ";
     else if (isComparison == 2) std::cout<<" | ";
 
+    #ifdef TESTING
+        CopyArray(b, a, inputSize);
+        std::sort(b, b + inputSize);
+    #endif //TESTING
+
     auto start = std::chrono::high_resolution_clock::now();
     sortFunction(a, inputSize);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = (end - start);
     std::cout<<std::fixed<<std::setprecision(6)<< 1.0 * duration.count() / 1E9 << "s";
+    
+    #ifdef TESTING
+        for (int i = 0; i < inputSize; ++i)
+            assert(a[i] == b[i]);
+        std::cout<<" | TEST PASSED!";
+    #endif //TESTING
 }
 
 void PrintComparisons(int a[], int inputSize, sort_cpr sortFunction, int isComparison) {
     if (isComparison == 1) std::cout << "Comparisons: ";
     else if (isComparison == 2) std::cout<<" | ";
-    
+
+    #ifdef TESTING
+        CopyArray(b, a, inputSize);
+        std::sort(b, b + inputSize);
+    #endif //TESTING
+
     long long comparisons = 0ll;
     sortFunction(a, inputSize, comparisons);
     std::cout<<comparisons;
+
+    #ifdef TESTING
+        for (int i = 0; i < inputSize; ++i)
+            assert(a[i] == b[i]);
+        std::cout<<" | TEST PASSED!"<<"\n";
+    #endif //TESTING
 }
 
 void PrintArray(int a[], int inputSize, const std::string &filename) {
@@ -217,4 +239,6 @@ void ComparisonMode(int argc, char** argv) {
 
         in.close();
     }
+
+    throw 1;
 }
