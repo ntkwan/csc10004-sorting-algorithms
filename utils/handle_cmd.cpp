@@ -39,11 +39,11 @@ void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction, int isCompariso
     if (isComparison == 1) std::cout << "Running time: ";
     else if (isComparison == 2) std::cout<<" | ";
 
-    clock_t start = clock();
+    auto start = std::chrono::high_resolution_clock::now();
     sortFunction(a, inputSize);
-    clock_t end = clock();
+    auto end = std::chrono::high_resolution_clock::now();
     auto duration = (end - start);
-    std::cout<<std::fixed<<std::setprecision(11)<< 1.0 * duration / CLOCKS_PER_SEC << "s";
+    std::cout<<std::fixed<<std::setprecision(6)<< 1.0 * duration.count() / 1E9 << "s";
 }
 
 void PrintComparisons(int a[], int inputSize, sort_cpr sortFunction, int isComparison) {
@@ -74,15 +74,12 @@ void AlgorithmMode(int argc, char** argv) {
 
     auto PrintResult = [&](int a[], int inputSize, sort_ptr sortRuntime, sort_cpr sortComparisons, const std::string& flag) {
         if (flag == "-both") {
-            CopyArray(a, data, inputSize);
             PrintRuntime(a, inputSize, sortRuntime, 1); std::cout<<"\n";
             CopyArray(a, data, inputSize);
-            PrintComparisons(a, inputSize, sortComparisons, 1); std::cout<<"\n";
+            PrintComparisons(a, inputSize, sortComparisons, 1); 
         } else if (flag == "-comp") {
-            CopyArray(a, data, inputSize);
             PrintComparisons(a, inputSize, sortComparisons, 1);
         } else if (flag == "-time") {
-            CopyArray(a, data, inputSize);
             PrintRuntime(a, inputSize, sortRuntime, 1);
         } else {
             return false;
@@ -116,7 +113,7 @@ void AlgorithmMode(int argc, char** argv) {
                 std::string fileName = "input_" + std::to_string(dataType + 1) + ".txt";
                 PrintArray(a, inputSize, fileName);
                 PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], argv[4]);
-                std::cout<<"\n";
+                std::cout<<"\n\n";
             }
         } else {
             //command 1
