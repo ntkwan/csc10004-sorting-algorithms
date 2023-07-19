@@ -19,6 +19,8 @@ namespace runtime {
 
         for (int i = 0; i < k; i++)
             a[l++] = arr[i];
+
+        delete[] arr;
     }
 
     void MergeSort(int a[], int l, int r) {
@@ -54,9 +56,9 @@ namespace runcpr {
         for (int i = 0; ++comparison && i < k; i++)
             a[l++] = arr[i];
     }
-    
+
     void MergeSort(int a[], int l, int r, long long& comparison) {
-        if (l >= r) return;
+        if (++comparison && l >= r) return;
 
         int mid = (l + r) / 2;
         MergeSort(a, l, mid, comparison);

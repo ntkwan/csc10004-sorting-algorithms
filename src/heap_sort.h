@@ -29,6 +29,7 @@ namespace runtime
         }
     }
 }
+
 namespace runcpr
 {
     void Sift(int a[], int left, int right, long long& comparison)

@@ -16,14 +16,15 @@ int GetSortName(const std::string &sortName) {
     else if (sortName == "counting-sort") return 1;
     else if (sortName == "merge-sort") return 2;
     else if (sortName == "quick-sort") return 3;
-    else if (sortName == "radix-sort") return 4;
-    else if (sortName == "selection-sort") return 5;
-    else if (sortName == "shaker-sort") return 6;
-    else if (sortName == "shell-sort") return 7;
-    else if (sortName == "flash-sort") return 8;
-    else if (sortName == "heap-sort") return 9;
-    else if (sortName == "insertion-sort") return 10;
-    else if (sortName == "binary-insertion-sort") return 11;
+    else if (sortName == "median-quick-sort") return 4;
+    else if (sortName == "radix-sort") return 5;
+    else if (sortName == "selection-sort") return 6;
+    else if (sortName == "shaker-sort") return 7;
+    else if (sortName == "shell-sort") return 8;
+    else if (sortName == "flash-sort") return 9;
+    else if (sortName == "heap-sort") return 10;
+    else if (sortName == "insertion-sort") return 11;
+    else if (sortName == "binary-insertion-sort") return 12;
     else return -1;
 }
 
@@ -114,7 +115,7 @@ void AlgorithmMode(int argc, char** argv) {
     if (ValidateFlag(argv[argc - 1]) == false) throw ERROR;
 
     std::cout<<"ALGORITHM MODE\n";
-    std::cout<<"Algorithm: "<<std::string(argv[2])<<"\n";
+    std::cout<<"Algorithm: "<<sortName[GetSortName(std::string(argv[2]))]<<"\n";
 
     if (argc == 5) {
         //command 3
@@ -183,7 +184,7 @@ void ComparisonMode(int argc, char** argv) {
     if (sortOrder1 == -1 || sortOrder2 == -1) throw ERROR;
     
     std::cout<<"COMPARE MODE\n";
-    std::cout<<"Algorithm: "<<std::string(argv[2])<<" | "<<std::string(argv[3])<<"\n";
+    std::cout<<"Algorithm: "<<sortName[GetSortName(std::string(argv[2]))]<<" | "<<sortName[GetSortName(std::string(argv[3]))]<<"\n";
 
     if (argc == 6) {
         //command 5

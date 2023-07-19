@@ -1,7 +1,9 @@
 #ifndef FLASH_SORT_H_INCLUDED
 #define FLASH_SORT_H_INCLUDED
 
-int bucket[300000];
+const int mxN = 1E6;
+int bucket[mxN];
+
 namespace runtime
 {
     void FlashSort(int a[], int n)

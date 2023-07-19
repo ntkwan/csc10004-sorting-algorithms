@@ -38,6 +38,9 @@ namespace runtime {
 
 		for (int i = 0; i < n; i++)
 			a[i] = b[i];
+
+        delete[] f;
+        delete[] b;
 	}
 
 	void RadixSort(int a[], int n) {
@@ -62,7 +65,7 @@ namespace runcpr {
     {
         int m = -2e9;
         for (int i = 0; ++comparison && i < n; i++)
-            if (a[i] > m)
+            if (++comparison && a[i] > m)
                 m = a[i];
 
         return m;
@@ -72,7 +75,7 @@ namespace runcpr {
     {
         int m = 2e9;
         for (int i = 0; ++comparison && i < n; i++)
-            if (a[i] < m)
+            if (++comparison && a[i] < m)
                 m = a[i];
 
         return m;
@@ -97,6 +100,9 @@ namespace runcpr {
 
         for (int i = 0; ++comparison && i < n; i++)
             a[i] = b[i];
+
+        delete[] f;
+        delete[] b;
     }
 
     void RadixSort(int a[], int n, long long &comparison)

@@ -28,6 +28,8 @@ namespace runtime {
         }
 
         for (int i = 0; i < n; ++i) a[i] = b[i] + mn;
+
+        delete[] f;
     }
 }
 
@@ -65,7 +67,7 @@ namespace runcpr {
         for (int i = 0; ++comparison && i < n; ++i)
             a[i] = b[i] + mn;
 
-        for (int i = 0; i < n; ++i) a[i] = b[i] + mn;
+        delete[] f;
     }
 }
 
