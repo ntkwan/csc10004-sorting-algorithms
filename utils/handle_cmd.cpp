@@ -147,10 +147,11 @@ void AlgorithmMode(int argc, char** argv) {
             std::cout<<"Input size: "<<inputSize<<"\n";
             std::cout<<"-------------------------------------------"<<"\n";
             for (int i = 0; i < inputSize; ++i) in>>data[i];
-
+            CopyArray(a, data, inputSize);
+            
             std::string flag = std::string(argv[4]);
-            PrintResult(data, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], flag);
-            PrintArray(data, inputSize, "output.txt"); std::cout<<"\n";
+            PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], flag);
+            PrintArray(a, inputSize, "output.txt"); std::cout<<"\n";
 
             in.close();
         }
