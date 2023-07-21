@@ -49,7 +49,7 @@ void PrintRuntime(int a[], int inputSize, sort_ptr sortFunction, int isCompariso
     sortFunction(a, inputSize);
     auto end = std::chrono::high_resolution_clock::now();
     auto duration = (end - start);
-    std::cout<<std::fixed<<std::setprecision(6)<< 1.0 * duration.count() / 1E9 << "s";
+    std::cout<<std::fixed<<std::setprecision(6)<< 1.0 * duration.count() / 1E6 << "ms";
     
     #ifdef TESTING
         for (int i = 0; i < inputSize; ++i)
@@ -148,7 +148,7 @@ void AlgorithmMode(int argc, char** argv) {
             std::cout<<"-------------------------------------------"<<"\n";
             for (int i = 0; i < inputSize; ++i) in>>data[i];
             CopyArray(a, data, inputSize);
-            
+
             std::string flag = std::string(argv[4]);
             PrintResult(a, inputSize, sortRuntime[GetSortName(argv[2])], sortCpr[GetSortName(argv[2])], flag);
             PrintArray(a, inputSize, "output.txt"); std::cout<<"\n";
@@ -220,6 +220,15 @@ void ComparisonMode(int argc, char** argv) {
         //command 4
         std::string flag = std::string(argv[4]);
         std::ifstream in(flag);
+
+        bool isFile = false;
+        for (int i = 0; i < (int)flag.size(); ++i)
+            if (flag[i] == '.') {
+                isFile = true;
+                break;
+            }
+        if (isFile == false) throw ERROR;
+
         std::cout<<"Input file: "<<flag<<"\n";
         int inputSize = 0;
         in>>inputSize;
