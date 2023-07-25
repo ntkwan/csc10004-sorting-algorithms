@@ -1,30 +1,22 @@
 #include "handle_cmd.h"
 
-std::string GetDataName(int dataType) {
-    if (dataType == RANDOM_DATA)
-        return "Randomize";
-    if (dataType == SORTED_DATA)
-        return "Sorted";
-    if (dataType == NEARLY_SORTED_DATA)
-        return "Nearly Sorted";
-    return "Reversed";
-}
-
 int GetSortName(const std::string &sortName) {
     if (sortName.size() <= 0) throw ERROR;
     if (sortName == "bubble-sort") return 0;
-    else if (sortName == "counting-sort") return 1;
-    else if (sortName == "merge-sort") return 2;
-    else if (sortName == "quick-sort") return 3;
-    else if (sortName == "median-quick-sort") return 4;
-    else if (sortName == "radix-sort") return 5;
-    else if (sortName == "selection-sort") return 6;
-    else if (sortName == "shaker-sort") return 7;
-    else if (sortName == "shell-sort") return 8;
-    else if (sortName == "flash-sort") return 9;
-    else if (sortName == "heap-sort") return 10;
-    else if (sortName == "insertion-sort") return 11;
-    else if (sortName == "binary-insertion-sort") return 12;
+    if (sortName == "bubble-sort-optimize-1") return 1;
+    else if (sortName == "counting-sort") return 2;
+    else if (sortName == "merge-sort") return 3;
+    else if (sortName == "quick-sort") return 4;
+    else if (sortName == "median-quick-sort") return 5;
+    else if (sortName == "radix-sort") return 6;
+    else if (sortName == "selection-sort") return 7;
+    else if (sortName == "selection-sort-optimize-1") return 8;
+    else if (sortName == "shaker-sort") return 9;
+    else if (sortName == "shell-sort") return 10;
+    else if (sortName == "flash-sort") return 11;
+    else if (sortName == "heap-sort") return 12;
+    else if (sortName == "insertion-sort") return 13;
+    else if (sortName == "binary-insertion-sort") return 14;
     else return -1;
 }
 
@@ -127,7 +119,7 @@ void AlgorithmMode(int argc, char** argv) {
             std::cout<<"Input size: "<<inputSize<<"\n\n";
 
             for (int dataType = 0; dataType < 4; ++dataType) {
-                std::cout<<"Input order: "<<GetDataName(dataType)<<"\n";
+                std::cout<<"Input order: "<<typeName[dataType]<<"\n";
                 std::cout<<"-------------------------------------------"<<"\n";
 
                 GenerateData(data, inputSize, dataType);
@@ -166,7 +158,7 @@ void AlgorithmMode(int argc, char** argv) {
         int dataOrder = GetDataOrder(dataType);
         if (dataOrder == -1) throw ERROR;
 
-        std::cout<<"Input order: "<<GetDataName(dataOrder)<<"\n";
+        std::cout<<"Input order: "<<typeName[dataOrder]<<"\n";
         std::cout<<"-------------------------------------------"<<"\n";
         
         GenerateData(data, inputSize, dataOrder);
@@ -199,7 +191,7 @@ void ComparisonMode(int argc, char** argv) {
         int dataOrder = GetDataOrder(dataType);
         if (dataOrder == -1) throw ERROR;
 
-        std::cout<<"Input order: "<<GetDataName(dataOrder)<<"\n";
+        std::cout<<"Input order: "<<typeName[dataOrder]<<"\n";
         std::cout<<"-------------------------------------------"<<"\n";
 
         GenerateData(data, inputSize, dataOrder);

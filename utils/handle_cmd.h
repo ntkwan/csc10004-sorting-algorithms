@@ -25,23 +25,41 @@
 
 typedef void (*sort_ptr)(int[], int);
 sort_ptr sortRuntime[] = {
-    runtime::BubbleSort, runtime::CountingSort, runtime::MergeSort,
-    runtime::RandomizedQuickSort, runtime::MedianQuickSort, runtime::RadixSort, runtime::SelectionSort, 
+    runtime::BubbleSortOptimize1, runtime::BubbleSort,
+    runtime::CountingSort, runtime::MergeSort,
+    runtime::RandomizedQuickSort, runtime::MedianQuickSort, 
+    runtime::RadixSort, 
+    runtime::SelectionSort, runtime::SelectionSortOptimize1, 
     runtime::ShakerSort, runtime::ShellSort, runtime::FlashSort, 
-    runtime::HeapSort, runtime::InsertionSort, runtime::BinaryInsertionSort};
+    runtime::HeapSort, 
+    runtime::InsertionSort, runtime::BinaryInsertionSort
+};
 
 typedef void (*sort_cpr)(int[], int, long long&);
 sort_cpr sortCpr[] = {
-    runcpr::BubbleSort, runcpr::CountingSort, runcpr::MergeSort,
-    runcpr::RandomizedQuickSort, runcpr::MedianQuickSort, runcpr::RadixSort, runcpr::SelectionSort, 
+    runcpr::BubbleSortOptimize1, runcpr::BubbleSort,
+    runcpr::CountingSort, runcpr::MergeSort,
+    runcpr::RandomizedQuickSort, runcpr::MedianQuickSort, 
+    runcpr::RadixSort, 
+    runcpr::SelectionSort, runcpr::SelectionSortOptimize1,
     runcpr::ShakerSort, runcpr::ShellSort, runcpr::FlashSort, 
-    runcpr::HeapSort, runcpr::InsertionSort, runcpr::BinaryInsertionSort};
+    runcpr::HeapSort, 
+    runcpr::InsertionSort, runcpr::BinaryInsertionSort
+};
 
 const std::string sortName[] = {
-    "Bubble Sort", "Counting Sort", "Merge Sort",
-    "Quick Sort (Random Pivot)", "Quick Sort (Median of Three Pivot)", "Radix Sort", "Selection Sort", 
+    "Bubble Sort", "Bubble Sort (Optimize 1)", 
+    "Counting Sort", "Merge Sort",
+    "Quick Sort (Random Pivot)", "Quick Sort (Median of Three Pivot)", "Radix Sort", 
+    "Selection Sort", "Selection Sort (Optimize 1)", 
     "Shaker Sort", "Shell Sort", "Flash Sort", 
-    "Heap Sort", "Insertion Sort", "Binary Insertion Sort"};
+    "Heap Sort", 
+    "Insertion Sort", "Binary Insertion Sort"
+};
+
+const std::string typeName[] = {
+    "Randomize", "Sorted", "Nearly Sorted", "Reversed"
+};
 
 const int sortNum = sizeof(sortRuntime) / sizeof(sortRuntime[0]);
 const int maxN = 1E6;

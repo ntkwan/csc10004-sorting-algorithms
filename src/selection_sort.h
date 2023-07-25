@@ -13,6 +13,24 @@ namespace runtime {
             if (minIdx != i) std::swap(a[minIdx], a[i]);
         }
     }
+
+    void SelectionSortOptimize1(int a[], int n) {
+        int r = n;
+        for (int i = 0; i < r - 1; ++i) {
+            int cur_min = i;
+            int cur_max = i;
+            for (int j = i + 1; j < r; ++j)
+                if (a[cur_min] > a[j])
+                    cur_min = j;
+                else if (a[cur_max] < a[j])
+                    cur_max = j;
+            
+            std::swap(a[cur_min], a[i]);
+            if (cur_max == i) cur_max = cur_min;
+            --r;
+            std::swap(a[cur_max], a[r]);
+        }
+    }
 }
 
 namespace runcpr {
@@ -25,6 +43,24 @@ namespace runcpr {
             }
 
             if (++comparison && minIdx != i) std::swap(a[minIdx], a[i]);
+        }
+    }
+
+    void SelectionSortOptimize1(int a[], int n, long long& comparison) {
+        int r = n;
+        for (int i = 0; ++comparison && i < r - 1; ++i) {
+            int cur_min = i;
+            int cur_max = i;
+            for (int j = i + 1; ++comparison && j < r; ++j)
+                if (++comparison && a[cur_min] > a[j])
+                    cur_min = j;
+                else if (++comparison && a[cur_max] < a[j])
+                    cur_max = j;
+            
+            std::swap(a[cur_min], a[i]);
+            if (++comparison && cur_max == i) cur_max = cur_min;
+            --r;
+            std::swap(a[cur_max], a[r]);
         }
     }
 }

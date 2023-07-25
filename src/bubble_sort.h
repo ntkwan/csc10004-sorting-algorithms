@@ -3,6 +3,15 @@
 
 namespace runtime {
     void BubbleSort(int a[], int n) {
+        for (int i = 1; i < n; i++){
+            for (int j = n - 1; j >= i; j--){
+                if (a[j] < a[j - 1])
+                    std::swap(a[j], a[j - 1]);
+            }
+        }
+    }
+
+    void BubbleSortOptimize1(int a[], int n) {
         int lstExchange = n - 2;
         for (int i = 0; i < n; i++) {
             int curExchange = -1;
@@ -18,10 +27,17 @@ namespace runtime {
     }
 }
 
-namespace runcpr
-{
-    void BubbleSort(int a[], int n, long long& comparison)
-    {
+namespace runcpr {
+    void BubbleSort(int a[], int n, long long& comparison) {
+        for (int i = 1; ++comparison && i < n; i++){
+            for (int j = n - 1; ++comparison && j >= i; j--){
+                if (++comparison && a[j] < a[j - 1])
+                    std::swap(a[j], a[j - 1]);
+            }
+        }
+    }
+
+    void BubbleSortOptimize1(int a[], int n, long long& comparison) {
         int lstExchange = n - 2;
         for (int i = 0; ++comparison && i < n; i++)
         {
