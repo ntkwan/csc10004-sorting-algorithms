@@ -6,7 +6,6 @@
 #include <fstream>
 #include <ctime>
 #include <chrono>
-#include <vector>
 #include <algorithm>
 #include <iomanip>
 #include <cassert>
